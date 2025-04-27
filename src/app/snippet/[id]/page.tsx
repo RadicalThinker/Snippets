@@ -55,3 +55,18 @@ const SnippetDetailPage: React.FC<SnippetDetailProps> = async ({ params }) => {
 };
 
 export default SnippetDetailPage;
+
+// caching and generating static snippets that are present in the database
+// This function will be called at build time to generate static pages for each snippet
+// It fetches all snippets from the database and returns an array of objects
+// with the snippet ID as a parameter
+// This is useful for static generation, allowing Next.js to pre-render the pages
+// for each snippet at build time
+// This function is used to generate static paths for dynamic routes
+export async function generateStaticParams() {
+  const snippets = await prisma.snippets.findMany();
+  return snippets.map((snippet) => ({
+    id: snippet.id.toString(),
+  }));
+}
+

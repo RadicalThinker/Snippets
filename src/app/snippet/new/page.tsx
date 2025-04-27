@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import prisma from "@/lib/prisma";
 import { Label } from "@radix-ui/react-label";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -23,7 +24,8 @@ const Createsnippetpage = () => {
 
     console.log(snippet);
     // Redirect to the snippet page or show a success message
-    redirect("/")
+    revalidatePath("/");
+    redirect("/");
   }
 
 

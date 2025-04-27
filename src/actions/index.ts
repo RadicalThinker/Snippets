@@ -9,7 +9,7 @@ export const saveSnippet = async (id: number, code: string) => {
         where: { id },
         data: { code },
     });
-
+    revalidatePath(`/snippet/${id}`)
     redirect(`/snippet/${id}`)
 }
 

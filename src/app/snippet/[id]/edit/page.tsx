@@ -1,6 +1,7 @@
 // import { Editor } from '@monaco-editor/react'
 import EditSnippetForm from '@/components/EditSnippetForm'
 import prisma from '@/lib/prisma'
+import Link from 'next/link'
 import React from 'react'
 
 const EditPageSnippet = async ({params}:{params:Promise<{id:string}>}) => {
@@ -14,7 +15,7 @@ const EditPageSnippet = async ({params}:{params:Promise<{id:string}>}) => {
         },
     })
     if (!snippet) {
-        return <div>Snippet not found</div>
+        return <div>Snippet not found . Create a Snippet now <Link href='/snippet/new'>create</Link></div>
     }
   return (
     <div>
